@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText num1,num2;
+        EditText num1,num2;
     TextView resultado;
     Button sumar, restar, dividir, multiplicar;
 
@@ -31,7 +31,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dividir.setOnClickListener(this);
         multiplicar.setOnClickListener(this);
 
+        if(savedInstanceState != null)
+            resultado.setText(savedInstanceState.getString("valor"));
 
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putString("valor", (String) resultado.getText());
+
+        super.onSaveInstanceState(outState);
     }
 
     @Override
